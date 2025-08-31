@@ -738,6 +738,19 @@
         z-index: 1;
         min-height: 94vh;
     }
+    .profile-img{
+        width:100px;
+        height:100px;
+    }
+    .profile-name{
+        font-size: 12px;
+    }
+    .card{
+        height:244px;
+    }
+    .scrollable-row{
+        padding-bottom: 90px;
+    }
 
     .left .close {
         position: absolute;
@@ -761,9 +774,7 @@
         display: block;
     }
 
-    .card {
-        width: 90vw;
-    }
+    
 
     .cardcontainer {
         margin: 0px;
@@ -802,9 +813,7 @@
         padding-bottom: 145px;
     }
 }
-@media (min-width: 478px) and (max-width: 648px){
 
-}
 @media (min-width: 1200px) and (max-width: 1368px) {
     .cardcontainer {
         width:109vh;
