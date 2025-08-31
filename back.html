@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Frontend Test</title>
+</head>
+<body>
+  <h1>Frontend Connected?</h1>
+  <button id="btn">Click to Fetch</button>
+
+  <script>
+    document.getElementById("btn").addEventListener("click", () => {
+      fetch("http://localhost:3000/api/message")
+        .then(res => res.json())
+        .then(data => {
+          console.log("Response from backend:", data);
+          alert(data.message); // should say "Hello from backend!"
+        })
+        .catch(err => console.error("Error:", err));
+    });
+  </script>
+</body>
+</html>

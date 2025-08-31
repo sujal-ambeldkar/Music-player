@@ -1,0 +1,430 @@
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ .container {
+     display: flex;
+     height: 100vh;
+     overflow: hidden;
+ }
+
+ .left {
+     width: 25%;
+     background-color: #121212;
+     color: white;
+     /* padding: 10px; */
+     overflow-y: auto;
+ }
+
+ .right {
+     width: 75%;
+     display: flex;
+     flex-direction: column;
+     background-color: #1e1e1e;
+     color: white;
+ }
+
+ .spotifyplaylist {
+     flex: 1;
+     overflow: hidden;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     height: 100vh;
+ }
+
+ .cardcontainer {
+     scrollbar-width: none;
+     height: 100vh;
+     overflow-y: auto;
+     width: 100%;
+     display: flex;
+     flex-wrap: wrap;
+     gap: 20px;
+     padding: 20px;
+     box-sizing: border-box;
+ } 
+
+
+
+ .card {
+     background-color: #181818;
+     border-radius: 8px;
+     width: calc(33.333% - 13.33px);
+     /* 3 cards per row */
+     padding: 15px;
+     box-sizing: border-box;
+     color: white;
+     cursor: pointer;
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+     transition: background 0.3s ease;
+     width: 100%;
+     max-width: 180px;
+     /* Card won’t grow larger than this */
+     flex: 1 1 30%;
+     /* Try to fit 3 per row, then wrap */
+     height: 280px;
+ }
+
+ .card:hover {
+     background-color: #282828;
+ }
+
+ .card img {
+     width: 100%;
+     border-radius: 8px;
+     object-fit: cover;
+ }
+
+ .para h2 {
+     font-size: 16px;
+     margin: 0;
+ }
+
+ .para p {
+     font-size: 14px;
+     color: #b3b3b3;
+     margin: 4px 0 0 0;
+ }
+
+ .nav-left {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     background-color: #121212;
+     padding: 0px 0px;
+     color: white;
+ }
+
+ .navbar {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     background-color: #121212;
+     padding: 8px 30px;
+     color: white;
+ }
+
+ .logo {
+     font-size: 22px;
+     font-weight: bold;
+     color: #1db954;
+ }
+
+ .divider {
+     width: 2px;
+     height: 16px;
+     fill: #b3b3b3;
+ }
+
+ .nav-links {
+     display: flex;
+     list-style: none;
+     gap: 170px;
+     margin: 0;
+     padding: 0;
+ }
+
+ .nav-links-left {
+     display: flex;
+     list-style: none;
+     gap: 35px;
+     margin: 0;
+     padding: 0;
+ }
+
+ .nav-links li a {
+     text-decoration: none;
+     color: #b3b3b3;
+     font-size: 16px;
+     transition: color 0.2s ease;
+ }
+
+ .nav-links li a:hover {
+     color: white;
+ }
+
+ .nav-right .profile-icon {
+     width: 24px;
+     height: 24px;
+     fill: #b3b3b3;
+     cursor: pointer;
+     transition: fill 0.2s ease;
+ }
+
+ .nav-right .profile-icon:hover {
+     fill: white;
+ }
+
+ .nav-icon {
+     width: 35px;
+     height: 35px;
+     fill: #b3b3b3;
+     transition: fill 0.2s ease;
+ }
+
+ .nav-inline-links {
+     display: flex;
+     align-items: center;
+     gap: 8px;
+     /* Reduce if needed */
+     list-style: none;
+     padding: 0;
+     margin: 0;
+ }
+
+ .nav-item {
+     display: flex;
+     align-items: center;
+     gap: 125px;
+     /* Tight space between text and divider */
+ }
+
+ .nav-item a {
+     text-decoration: none;
+     color: #b3b3b3;
+     font-size: 14px;
+     transition: color 0.2s ease;
+ }
+
+ .nav-item a:hover {
+     color: white;
+ }
+
+ .divider {
+     display: inline-block;
+     width: 1px;
+     height: 16px;
+     background-color: #b3b3b3;
+ }
+
+
+ .grad { 
+    margin: 0px 20px;
+     padding: 10px;
+     width: 72%;
+     height: 80%;
+     overflow-y: scroll;
+     /* or auto if needed */
+     scrollbar-width: none;
+     /* Firefox */
+     -ms-overflow-style: none;
+
+     background-color: #1e1e1e;
+ }
+
+ .left::-webkit-scrollbar {
+     display: none;
+     /* Chrome, Brave, Edge, Safari */
+ }
+
+ .songlist ul {
+
+     align-items: center;
+     /* vertically center icon + text */
+     justify-content: center;
+     /* horizontally center the whole block */
+     gap: 10px;
+     list-style: none;
+     padding: 0;
+ }
+
+ .songlist {
+     list-style: none;
+     padding: 0;
+     margin: 0;
+ }
+
+ .songlist li {
+     display: flex;
+     align-items: center;
+     gap: 15px;
+     padding: 20px 10px;
+     cursor: pointer;
+     transition: background-color 0.2s ease;
+     border-radius: 6px;
+     color: white;
+ }
+.control-btn {
+  background: transparent;     /* ✅ no background */
+  border: none;                /* ✅ no border */
+  outline: none;               /* ✅ no focus border */
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ .songlist li:hover {
+     background-color: #2a2a2a;
+ }
+
+ .songlist svg {
+     width: 24px;
+     height: 24px;
+     fill: #b3b3b3;
+     transition: fill 0.2s ease;
+ }
+
+ .songlist li:hover svg {
+     fill: white;
+ }
+
+
+ .songlist li:hover {
+     text-decoration: underline;
+ }
+
+ .playbar {
+     padding: 10px;
+     background-color: #181818;
+     display: flex;
+     flex-direction: column;
+ }
+
+ .seekbar {
+     height: 5px;
+     background-color: #555;
+     position: relative;
+     margin-bottom: 8px;
+ }
+
+ .circle {
+     width: 10px;
+     height: 10px;
+     border-radius: 50%;
+     background-color: #1db954;
+     position: absolute;
+     top: -3px;
+     left: 0;
+ }
+
+ .songbuttons {
+     display: flex;
+     justify-content: center;
+     gap: 10px;
+ }
+
+ .songinfo,
+ .songtime {
+     text-align: center;
+     margin-top: 5px;
+ }
+
+ .playlist-heading {
+     display: flex;
+     align-items: center;
+     /* vertically center icon + text */
+     justify-content: center;
+     /* horizontally center the whole block */
+     gap: 10px;
+     /* space between icon and text */
+     color: white;
+     font-size: 24px;
+     margin: 20px 0;
+     /* optional spacing around */
+ }
+
+
+ .playlist-heading .playlist-icon svg {
+     fill: #b3b3b3;
+     width: 24px;
+     height: 24px;
+     transition: fill 0.2s ease;
+ }
+
+ .playlist-heading:hover .playlist-icon svg {
+     fill: white;
+ }
+.scrollable-row {
+  display: flex;
+  gap: 35px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+.scrollable-row::-webkit-scrollbar {
+  display: none;
+}
+.scrollable-row {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Common styles */
+.section-mid{
+    height:29px;
+    width:228px;
+    padding: 5px 0px;
+}
+.section-top{
+    padding: 0px 0px;
+}
+.profile-card {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 150px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background-color: #1e1e1e;
+  color: white;
+  font-family: sans-serif;
+}
+
+.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+
+.profile-name {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white; /* or whatever suits your theme */
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.logo-img {
+  width: 90px;
+  height: 38px;
+  object-fit: contain;
+}
+
+
+
+
+ @media (max-width: 768px) {
+     .card {
+         flex: 1 1 45%;
+     }
+ }
+
+ @media (max-width: 480px) {
+     .card {
+         flex: 1 1 100%;
+     }
+ }
