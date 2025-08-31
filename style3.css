@@ -497,11 +497,21 @@ body {
 /* Mobile (max-width: 480px) */
 @media (max-width: 480px) {
     .playbar {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 4px;
-        padding: 4px 8px;
-    }
+    position: fixed; /* or absolute inside relative container */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    background-color: #181818;
+    border-top: 1px solid #333;
+    border-radius: 12px 12px 0 0; /* rounded only top corners */
+    color: white;
+    font-family: Arial, sans-serif;
+    z-index: 10; /* stay above other content */
+}
 
     .songinfo {
         font-size: 13px;

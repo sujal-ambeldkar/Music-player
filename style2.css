@@ -780,7 +780,7 @@
         left: -120%;
         transition: all .3s;
         z-index: 1;
-        min-height: 93vh;
+        min-height: 93%;
     }
     .profile-img{
         width:100px;
@@ -835,7 +835,7 @@
 
     .grad {
         width: 80%;
-        margin: 33px 35px;
+        /* margin: 33px 35px; */
         padding: 17px;
     }
 
