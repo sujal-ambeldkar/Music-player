@@ -703,8 +703,8 @@
         position: absolute;
         left: -120%;
         transition: all .3s;
-        z-index: 1;
-        min-height: 94vh;
+        /* z-index: 1; */
+        min-height: 100vh;
     }
 
     .left .close {
@@ -744,7 +744,7 @@
 
     .grad {
         width: 82%;
-        margin: 40px 38px;
+        margin: 0px 38px;
         padding: 10px;
     }
 
@@ -773,14 +773,17 @@
     font-size: 8px;
     transition: color 0.2s ease;
 }
+.navbar{
+    padding: 0px 30px;
+}
      .left {
         overflow-y: auto;
         width: 375px;
         position: absolute;
         left: -120%;
         transition: all .3s;
-        z-index: 1;
-        min-height: 93%;
+        /* z-index: 1; */
+        min-height: 100vh;
     }
     .profile-img{
         width:100px;
@@ -835,8 +838,8 @@
 
     .grad {
         width: 80%;
-        /* margin: 33px 35px; */
-        padding: 17px;
+         margin: 0px 35px; 
+        padding: 10px;
     }
 
     .nav-link .nav-icon {
