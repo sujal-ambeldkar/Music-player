@@ -34,6 +34,7 @@
     justify-content: space-between;
     height: 100vh;
 }
+
 /*         */
 .cardcontainer {
 
@@ -404,8 +405,10 @@
 /* --- Seekbar --- */
 .seekbar {
     position: relative;
-    flex: 1.8;               /* slightly reduced space to give room for songinfo */
-    height: 5px;             /* smaller */
+    flex: 1.8;
+    /* slightly reduced space to give room for songinfo */
+    height: 5px;
+    /* smaller */
     background-color: #333;
     border-radius: 6px;
     cursor: pointer;
@@ -438,7 +441,8 @@
 
 /* --- Song Info --- */
 .songinfo {
-    flex: 1.2;               /* more space */
+    flex: 1.2;
+    /* more space */
     font-size: 14px;
     white-space: nowrap;
     overflow: hidden;
@@ -643,8 +647,10 @@
 .hamburger {
     display: none
 }
+
 .rect {
-    padding: 100px 0; /* adds space above and below equalizer */
+    padding: 100px 0;
+    /* adds space above and below equalizer */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -652,51 +658,95 @@
 
 /* Equalizer container */
 .equalizer {
-    margin-top: 20px;  /* pushes it down */
+    margin-top: 20px;
+    /* pushes it down */
 
     display: flex;
     align-items: flex-end;
-    justify-content: center; /* center horizontally */
-    gap: 6px;                /* slightly bigger spacing between bars */
-    height: 50px;             /* taller container */
-    margin: 0 auto;           /* center in its parent */
+    justify-content: center;
+    /* center horizontally */
+    gap: 6px;
+    /* slightly bigger spacing between bars */
+    height: 50px;
+    /* taller container */
+    margin: 0 auto;
+    /* center in its parent */
 }
 
 /* Each bar */
 .equalizer .bar {
-    width: 8px;  /* wider bars */
-    height: 10px; /* initial height */
+    width: 8px;
+    /* wider bars */
+    height: 10px;
+    /* initial height */
     background: linear-gradient(180deg, #ff6ec7, #ff4da6, #ff1a75);
     border-radius: 3px;
     animation: bounce 1s infinite ease-in-out;
-    box-shadow: 0 0 8px #ff4da6, 0 0 12px #ff1a75; /* glowing effect */
+    box-shadow: 0 0 8px #ff4da6, 0 0 12px #ff1a75;
+    /* glowing effect */
 }
 
 /* Each bar gets a slightly different delay for randomness */
-.equalizer .bar:nth-child(1) { animation-delay: 0s; }
-.equalizer .bar:nth-child(2) { animation-delay: 0.1s; }
-.equalizer .bar:nth-child(3) { animation-delay: 0.2s; }
-.equalizer .bar:nth-child(4) { animation-delay: 0.3s; }
-.equalizer .bar:nth-child(5) { animation-delay: 0.4s; }
-.equalizer .bar:nth-child(6) { animation-delay: 0.5s; }
-.equalizer .bar:nth-child(7) { animation-delay: 0.6s; }
-.equalizer .bar:nth-child(8) { animation-delay: 0.7s; }
+.equalizer .bar:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.equalizer .bar:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.equalizer .bar:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.equalizer .bar:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.equalizer .bar:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+.equalizer .bar:nth-child(6) {
+    animation-delay: 0.5s;
+}
+
+.equalizer .bar:nth-child(7) {
+    animation-delay: 0.6s;
+}
+
+.equalizer .bar:nth-child(8) {
+    animation-delay: 0.7s;
+}
 
 /* Keyframes for the bounce animation */
 @keyframes bounce {
-    0%, 100% { height: 10px; }
-    50% { height: 40px; } /* max height */
+
+    0%,
+    100% {
+        height: 10px;
+    }
+
+    50% {
+        height: 40px;
+    }
+
+    /* max height */
 }
 
 /* ----------------------------responsive------------------------ */
 @media(max-width: 1200px) {
+    .nav-links-left {
+        gap: 4px;
+    }
 
     .nav-links li a {
-    text-decoration: none;
-    color: #b3b3b3;
-    font-size: 13px;
-    transition: color 0.2s ease;
-}
+        text-decoration: none;
+        color: #b3b3b3;
+        font-size: 13px;
+        transition: color 0.2s ease;
+    }
+
     .left {
         overflow-y: auto;
         width: 430px;
@@ -761,22 +811,25 @@
 
 }
 
-@media(max-width: 1200px) {
-    .card {
-        width: 64vw;
-    }
-}
+
+
 @media (max-width: 415px) {
+    .nav-links-left {
+        gap: 4px;
+    }
+
     .nav-links li a {
-    text-decoration: none;
-    color: #b3b3b3;
-    font-size: 8px;
-    transition: color 0.2s ease;
-}
-.navbar{
-    padding: 0px 30px;
-}
-     .left {
+        text-decoration: none;
+        color: #b3b3b3;
+        font-size: 8px;
+        transition: color 0.2s ease;
+    }
+
+    .navbar {
+        padding: 0px 30px;
+    }
+
+    .left {
         overflow-y: auto;
         width: 375px;
         position: absolute;
@@ -785,23 +838,29 @@
         /* z-index: 1; */
         min-height: 100vh;
     }
-    .profile-img{
-        width:100px;
-        height:100px;
+
+    .profile-img {
+        width: 100px;
+        height: 100px;
     }
-    .profile-name{
+
+    .profile-name {
         font-size: 12px;
     }
-    .card{
-        height:244px;
+
+    .card {
+        height: 244px;
     }
-    .scrollable-row{
+
+    .scrollable-row {
         padding-bottom: 50px;
-        gap:1px;
+        gap: 1px;
     }
-.section-heading{
-    font-size:1.1em;
-}
+
+    .section-heading {
+        font-size: 1.1em;
+    }
+
     .left .close {
         position: absolute;
         right: 31px;
@@ -811,8 +870,8 @@
 
     }
 
-    
- .right {
+
+    .right {
         margin: 0;
         width: 100vw;
 
@@ -824,7 +883,7 @@
         display: block;
     }
 
-    
+
 
     .cardcontainer {
         margin: 0px;
@@ -838,7 +897,7 @@
 
     .grad {
         width: 80%;
-         margin: 0px 35px; 
+        margin: 0px 35px;
         padding: 10px;
     }
 
@@ -854,69 +913,75 @@
     }
 
 }
-   
+
 @media (min-width: 1635px) {
-    .cardcontainer{
-        width:83%;
+    .cardcontainer {
+        width: 83%;
     }
-    .scrollable-row{
+
+    .scrollable-row {
         padding-bottom: 145px;
     }
 }
 
 @media (min-width: 1200px) and (max-width: 1368px) {
     .cardcontainer {
-        width:109vh;
+        width: 109vh;
     }
 }
+
 .section-mid {
     margin: 30px 20px 10px 20px;
 }
+
 .cardcontainer,
 .section-mid,
 .card-row {
     width: 100%;
     box-sizing: border-box;
 }
-.spotifyplaylist{
+
+.spotifyplaylist {
     .main-content {
-    display: flex;
-    flex-direction: column; /* stack albums, heading, artists */
-    gap: 20px;
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    background: linear-gradient(180deg, #121212 0%, #1e1e1e 100%);
-    border-radius: 12px;
-}
+        display: flex;
+        flex-direction: column;
+        /* stack albums, heading, artists */
+        gap: 20px;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        background: linear-gradient(180deg, #121212 0%, #1e1e1e 100%);
+        border-radius: 12px;
+    }
 
 }
+
 @media (max-width: 480px) {
 
     .playbar {
-    width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0px;
-    padding: 0px 12px;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0px;
+        padding: 0px 12px;
 
-    /* Gradient with subtle pink tint */
-    background: linear-gradient(180deg, #1c1c1c, #2c1c2c, #2c2c2c);
+        /* Gradient with subtle pink tint */
+        background: linear-gradient(180deg, #1c1c1c, #2c1c2c, #2c2c2c);
 
-    /* Modern touches */
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
+        /* Modern touches */
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(8px);
 
-    /* Text / icons color */
-    color: #fff;
-}
+        /* Text / icons color */
+        color: #fff;
+    }
 
 
-    .songtime{
+    .songtime {
         order: 1;
-        color:aliceblue;
+        color: aliceblue;
         font-size: 13px;
         text-align: left;
         flex: none;
@@ -926,15 +991,19 @@
     .songinfo {
         font-size: 13px;
         text-align: center;
-        order: 1;   /* on top */
-        flex: none; /* allow it to take full width */
+        order: 1;
+        /* on top */
+        flex: none;
+        /* allow it to take full width */
         margin: 0;
     }
 
     .seekbar {
-        height: 4px;       /* slightly smaller */
+        height: 4px;
+        /* slightly smaller */
         flex: none;
-        order: 2;          /* middle */
+        order: 2;
+        /* middle */
     }
 
     .seekbar .circle {
@@ -942,7 +1011,7 @@
         height: 8px;
     }
 
-    
+
 
     .songbuttons {
         justify-content: center;
