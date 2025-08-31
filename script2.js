@@ -5,29 +5,29 @@ document.addEventListener("DOMContentLoaded", () => {
     "Happy hist": [
       {
         title: "Cheri Cheri Lady ",
-        file: "/music-backend/Allsongs/Modern Talking - Cheri Cheri Lady (Lyrics).mp3"
+        file: "music-backend\Allsongs\Modern Talking - Cheri Cheri Lady (Lyrics).mp3"
       },
       {
         title: "why mona-Wannabe",
-        file: "/music-backend/Allsongs/why mona - Wannabe (Lyrics).mp3"
+        file: "music-backend\Allsongs\why mona - Wannabe (Lyrics).mp3"
       },
       {
         title: "Diljit Dosanjh_ Born To Shine",
-        file: "/music-backend/Allsongs/Diljit Dosanjh_ Born To Shine (Official Music Video) G.O.A.T.mp3"
+        file: "music-backend\Allsongs\Diljit Dosanjh_ Born To Shine (Official Music Video) G.O.A.T.mp3"
       }
     ],
     "Sad vibes": [
       {
         title: "Hanuman chalisa",
-        file: "/music-backend/Allsongs/shri-hanuman-chalisa.mp3"
+        file: "music-backend\Allsongs\shri-hanuman-chalisa.mp3"
       },
       {
         title: "Ram Na Milenge Hanuman Ke Bina",
-        file: "/music-backend/Allsongs/हनमन ज क भजन, सकट हरन वल क हनमन I Ram Na Milenge Hanuman Ke Bina, LAKHBIR SINGH LAKKHA.mp3"
+        file: "music-backend\Allsongs\हनमन ज क भजन, सकट हरन वल क हनमन I Ram Na Milenge Hanuman Ke Bina, LAKHBIR SINGH LAKKHA.mp3"
       },
       {
         title: "Ram Ram Kiye Jaa",
-        file: "/music-backend/Allsongs/Khush Honge Hanuman Ram Ram Kiye Jaa I LAKHBIR SINGH LAKKHA I HD Video.mp3"
+        file: "music-backend\Allsongs\Khush Honge Hanuman Ram Ram Kiye Jaa I LAKHBIR SINGH LAKKHA I HD Video.mp3"
       }
     ],
     "Chillout": [
@@ -37,39 +37,39 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       {
         title: "Alan Walker Alone",
-        file: "/music-backend/Allsongs/Alan Walker - Alone (Lyrics).mp3"
+        file: "music-backend\Allsongs\Alan Walker - Faded (Lyrics).mp3"
       },
       {
         title: "Ava Max-Alone pt-II",
-        file: "/music-backend/Allsongs/Alan Walker & Ava Max - Alone, Pt. II (Lyrics).mp3"
+        file: "music-backend\Allsongs\Alan Walker & Ava Max - Alone, Pt. II (Lyrics).mp3"
       }
     ],
     "Workout": [
       {
         title: "Deerane",
-        file: "/music-backend/Allsongs/Deerane.mp3"
+        file: "music-backend\Allsongs\Deerane.mp3"
       },
       {
         title: "Jal Rahin Hain",
-        file: "/music-backend/Allsongs/Jal Rahin Hain - Full Video Baahubali - The Beginning Maahishmati Anthem Kailash , MM Kreem.mp3"
+        file: "music-backend\Allsongs\Jal Rahin Hain - Full Video  Baahubali - The  Beginning  Maahishmati Anthem  Kailash , MM Kreem.mp3"
       },
       {
         title: "Jay-Jaykara",
-        file: "/music-backend/Allsongs/Jay-Jaykara Baahubali 2 The Conclusion Anushka Shetty & Prabhas Kailash K M.M.Kreem Manoj.mp3"
+        file: "music-backend\Allsongs\Jay-Jaykara  Baahubali 2 The Conclusion  Anushka Shetty & Prabhas  Kailash K  M.M.Kreem  Manoj.mp3"
       }
     ],
     "Party": [
       {
         title: "Pushpa-Oo Bolega",
-        file: "/music-backend/Allsongs/Oo Bolega ya Oo Oo Bolega Ft Samantha ( Full Video) Pushpa Allu A, RashmikaKanika K, DSP, Sukumar.mp3"
+        file: "music-backend\Allsongs\Oo Bolega ya Oo Oo Bolega Ft Samantha ( Full Video) Pushpa  Allu A, RashmikaKanika K, DSP, Sukumar.mp3"
       },
       {
         title: "Pushpa-Jeeva-Nadhi ",
-        file: "/music-backend/Allsongs/Jeeva-Nadhi.mp3"
+        file: "music-backend\Allsongs\Jeeva-Nadhi.mp3"
       },
       {
         title: "Puspa-Angaaron",
-        file: "/music-backend/Allsongs/Angaaron (The Couple Song) Full Video Pushpa 2 The Rule Allu Arjun Rashmika Sukumar DSP, Shreya.mp3"
+        file: "music-backend\Allsongs\Angaaron (The Couple Song) Full Video Pushpa 2 The Rule Allu Arjun Rashmika Sukumar DSP, Shreya.mp3"
       }
     ],
     "Focus": [
@@ -83,40 +83,40 @@ document.addEventListener("DOMContentLoaded", () => {
     "Taylor Swift": [
       {
         title: "Bad Blood",
-        file: "/music-backend/Allsongs/Taylor Swift - Bad Blood ft. Kendrick Lamar.mp3"
+        file: "music-backend\Allsongs\Taylor Swift - Bad Blood ft. Kendrick Lamar.mp3"
       },
       {
         title: "Taylor Swift-Lover",
-        file: "/music-backend/Allsongs/Taylor Swift - Lover (Official Music Video).mp3"
+        file: "music-backend\Allsongs\Taylor Swift - Lover (Official Music Video).mp3"
       },
       { title: "Artist1 Song 3", file: "a1_song3.mp3" }
     ],
     "Guru Randhawa": [
       {
         title: "High-Rated Gabru",
-        file: "/music-backend/Allsongs/Guru Randhawa_ High Rated Gabru Official Song DirectorGifty Bhushan Kumar T-Series.mp3"
+        file: "music-backend\Allsongs\Guru Randhawa_ High Rated Gabru Official Song  DirectorGifty  Bhushan Kumar  T-Series.mp3"
       },
       {
         title: "Guru Randhawa-Lahore",
-        file: "/music-backend/Allsongs/Guru Randhawa_ Lahore (Official Video) Bhushan Kumar Vee DirectorGifty T-Series.mp3"
+        file: "music-backend\Allsongs\Guru Randhawa_ Lahore (Official Video) Bhushan Kumar  Vee  DirectorGifty  T-Series.mp3"
       },
       {
         title: "Downtown",
-        file: "/music-backend/Allsongs/Guru Randhawa_ Downtown (Official Video) Bhushan Kumar DirectorGifty Vee Delbar Arya.mp3"
+        file: "music-backend\Allsongs\Guru Randhawa_ Downtown (Official Video)  Bhushan Kumar  DirectorGifty  Vee  Delbar Arya.mp3"
       }
     ],
     "Shreya Ghoshal": [
       {
         title: "Deewani Mastani",
-        file: "/music-backend/Allsongs/Deewani Mastani Full Video Song Bajirao Mastani Deepika Padukone.mp3"
+        file: "music-backend\Allsongs\Deewani Mastani Full Video Song  Bajirao Mastani  Deepika Padukone.mp3"
       },
       {
         title: "Bas Ek Dhadak-Dhadak 2",
-        file: "/music-backend/Allsongs/Bas Ek Dhadak Dhadak 2 Siddhant C, Triptii D Shreya G, Jubin N, Javed-Mohsin, Rashmi V.mp3"
+        file: "music-backend\Allsongs\Bas Ek Dhadak  Dhadak 2  Siddhant C, Triptii D  Shreya G, Jubin N, Javed-Mohsin, Rashmi V.mp3"
       },
       {
         title: "Leja-Leja Ra",
-        file: "/music-backend/Allsongs/Leja Leja Re (Full Video Song) Ustad Sultan Khan & Shreya Ghoshal Ustad & The Divas.mp3"
+        file: "music-backend\Allsongs\Leja Leja Re (Full Video Song) Ustad Sultan Khan & Shreya Ghoshal  Ustad & The Divas.mp3"
       }
     ]
   };

@@ -481,48 +481,7 @@
 }
 
 /* --- Mobile Responsive --- */
-@media (max-width: 480px) {
-    .playbar {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 4px;
-        padding: 4px 8px;
-    }
 
-    .songinfo {
-        font-size: 13px;
-        text-align: center;
-        order: 1;   /* on top */
-        flex: none; /* allow it to take full width */
-        margin: 0;
-    }
-
-    .seekbar {
-        height: 4px;       /* slightly smaller */
-        flex: none;
-        order: 2;          /* middle */
-    }
-
-    .seekbar .circle {
-        width: 8px;
-        height: 8px;
-    }
-
-    .songtime {
-        display: none;
-    }
-
-    .songbuttons {
-        justify-content: center;
-        gap: 8px;
-        order: 3;
-    }
-
-    .control-btn svg {
-        width: 20px;
-        height: 20px;
-    }
-}
 
 /* ---------------------------------------end-------------------- */
 .control-btn:hover {
@@ -679,17 +638,7 @@
 
 
 
-@media (max-width: 768px) {
-    .card {
-        flex: 1 1 45%;
-    }
-}
 
-@media (max-width: 480px) {
-    .card {
-        flex: 1 1 100%;
-    }
-}
 
 .hamburger {
     display: none
@@ -773,16 +722,16 @@
         width: 64vw;
     }
 }
-@media (max-width: 480px) {
+@media (max-width: 415px) {
     .nav-links li a {
     text-decoration: none;
     color: #b3b3b3;
-    font-size: 13px;
+    font-size: 8px;
     transition: color 0.2s ease;
 }
      .left {
         overflow-y: auto;
-        width: 430px;
+        width: 365px;
         position: absolute;
         left: -120%;
         transition: all .3s;
@@ -828,7 +777,7 @@
 
     .grad {
         width: 82%;
-        margin: 40px 38px;
+        margin: 35px 35px;
         padding: 10px;
     }
 
@@ -882,4 +831,47 @@
     border-radius: 12px;
 }
 
+}
+@media (max-width: 480px) {
+    .playbar {
+        width:100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        padding: 4px 8px;
+    }
+
+    .songinfo {
+        font-size: 13px;
+        text-align: center;
+        order: 1;   /* on top */
+        flex: none; /* allow it to take full width */
+        margin: 0;
+    }
+
+    .seekbar {
+        height: 4px;       /* slightly smaller */
+        flex: none;
+        order: 2;          /* middle */
+    }
+
+    .seekbar .circle {
+        width: 8px;
+        height: 8px;
+    }
+
+    .songtime {
+        display: none;
+    }
+
+    .songbuttons {
+        justify-content: center;
+        gap: 8px;
+        order: 3;
+    }
+
+    .control-btn svg {
+        width: 20px;
+        height: 20px;
+    }
 }
