@@ -780,7 +780,7 @@
         left: -120%;
         transition: all .3s;
         z-index: 1;
-        min-height: 92vh;
+        min-height: 93vh;
     }
     .profile-img{
         width:100px;
@@ -834,9 +834,9 @@
     }
 
     .grad {
-        width: 82%;
-        margin: 35px 35px;
-        padding: 10px;
+        width: 80%;
+        margin: 33px 35px;
+        padding: 17px;
     }
 
     .nav-link .nav-icon {
@@ -889,13 +889,28 @@
 
 }
 @media (max-width: 480px) {
+
     .playbar {
-        width:100%;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 4px;
-        padding: 5px 10px;
-    }
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0px;
+    padding: 0px 12px;
+
+    /* Gradient with subtle pink tint */
+    background: linear-gradient(180deg, #1c1c1c, #2c1c2c, #2c2c2c);
+
+    /* Modern touches */
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+
+    /* Text / icons color */
+    color: #fff;
+}
+
+
     .songtime{
         order: 1;
         color:aliceblue;
