@@ -643,6 +643,50 @@
 .hamburger {
     display: none
 }
+.rect {
+    padding: 100px 0; /* adds space above and below equalizer */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Equalizer container */
+.equalizer {
+    margin-top: 20px;  /* pushes it down */
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center; /* center horizontally */
+    gap: 6px;                /* slightly bigger spacing between bars */
+    height: 50px;             /* taller container */
+    margin: 0 auto;           /* center in its parent */
+}
+
+/* Each bar */
+.equalizer .bar {
+    width: 8px;  /* wider bars */
+    height: 10px; /* initial height */
+    background: linear-gradient(180deg, #ff6ec7, #ff4da6, #ff1a75);
+    border-radius: 3px;
+    animation: bounce 1s infinite ease-in-out;
+    box-shadow: 0 0 8px #ff4da6, 0 0 12px #ff1a75; /* glowing effect */
+}
+
+/* Each bar gets a slightly different delay for randomness */
+.equalizer .bar:nth-child(1) { animation-delay: 0s; }
+.equalizer .bar:nth-child(2) { animation-delay: 0.1s; }
+.equalizer .bar:nth-child(3) { animation-delay: 0.2s; }
+.equalizer .bar:nth-child(4) { animation-delay: 0.3s; }
+.equalizer .bar:nth-child(5) { animation-delay: 0.4s; }
+.equalizer .bar:nth-child(6) { animation-delay: 0.5s; }
+.equalizer .bar:nth-child(7) { animation-delay: 0.6s; }
+.equalizer .bar:nth-child(8) { animation-delay: 0.7s; }
+
+/* Keyframes for the bounce animation */
+@keyframes bounce {
+    0%, 100% { height: 10px; }
+    50% { height: 40px; } /* max height */
+}
 
 /* ----------------------------responsive------------------------ */
 @media(max-width: 1200px) {
@@ -731,12 +775,12 @@
 }
      .left {
         overflow-y: auto;
-        width: 365px;
+        width: 375px;
         position: absolute;
         left: -120%;
         transition: all .3s;
         z-index: 1;
-        min-height: 94vh;
+        min-height: 92vh;
     }
     .profile-img{
         width:100px;
@@ -749,9 +793,12 @@
         height:244px;
     }
     .scrollable-row{
-        padding-bottom: 90px;
+        padding-bottom: 50px;
+        gap:1px;
     }
-
+.section-heading{
+    font-size:1.1em;
+}
     .left .close {
         position: absolute;
         right: 31px;
@@ -847,7 +894,15 @@
         flex-direction: column;
         align-items: stretch;
         gap: 4px;
-        padding: 4px 8px;
+        padding: 5px 10px;
+    }
+    .songtime{
+        order: 1;
+        color:aliceblue;
+        font-size: 13px;
+        text-align: left;
+        flex: none;
+        margin: 0;
     }
 
     .songinfo {
@@ -869,9 +924,7 @@
         height: 8px;
     }
 
-    .songtime {
-        display: none;
-    }
+    
 
     .songbuttons {
         justify-content: center;
