@@ -268,3 +268,30 @@ document.querySelector(".close").addEventListener("click",()=>{
   document.querySelector(".left").style.left="-100%"
   console.log("click")
 })
+// /----------------------------------------------------------------------
+const toggleBtn = document.getElementById("toggle-btn");
+const body = document.body;
+
+// Check if a theme was saved before
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "dark") {
+  body.classList.add("dark");
+  toggleBtn.textContent = "☀️ Light Mode";
+} else {
+  // Default is light mode
+  body.classList.remove("dark");
+  toggleBtn.textContent = "🌙 Dark Mode";
+}
+
+toggleBtn.addEventListener("click", () => {
+  body.classList.toggle("dark");
+
+  if (body.classList.contains("dark")) {
+    toggleBtn.textContent = "☀️ Light Mode";
+    localStorage.setItem("theme", "dark");
+  } else {
+    toggleBtn.textContent = "🌙 Dark Mode";
+    localStorage.setItem("theme", "light");
+  }
+});
