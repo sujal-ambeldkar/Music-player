@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player - Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+
+        body.light {
+            background: #f5f5f5;
+            color: #000;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            height: 100vh;
+        }
+
+        /* Sidebar */
+        .left {
+            background: #000;
+            border-right: 1px solid #282828;
+            display: flex;
+            flex-direction: column;
+            transition: background 0.3s;
+        }
+
+        body.light .left {
+            background: #fff;
+            border-right: 1px solid #e0e0e0;
+        }
+
+        .navbar {
+            padding: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 35px;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 12px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        body.light .logo-img {
+            filter: none;
+        }
+
+        /* General navigation link styling */
+        /* Sidebar Nav Button Styles */
+.sidebar-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 36px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  background: linear-gradient(90deg, #1db954, #3ac8d1 99%);
+  color: #fff !important;
+  border: none;
+  border-radius: 30px;
+  font-size: 17px;
+  font-weight: 700;
+  box-shadow: 0 2px 14px rgba(29, 185, 84, 0.11);
+  transition: all 0.22s;
+  letter-spacing: 1px;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.nav-link .nav-icon {
+  width: 22px;
+  height: 22px;
+  margin-right: 3px;
+  fill: #fff;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  background: linear-gradient(90deg, #1db974 60%, #498bf0 100%);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(66,185,181,0.18);
+  transform: translateY(-2px) scale(1.045);
+}
+
+/* Go To Profile Button */
+#profileBtn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 28px;
+  background: linear-gradient(90deg,#764ba2 5%, #667eea 95%);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 17px;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  box-shadow: 0 2px 16px rgba(102,126,234,0.16);
+  cursor: pointer;
+  transition: all 0.22s;
+}
+
+#profileBtn:hover,
+#profileBtn:focus {
+  background: linear-gradient(90deg, #b621fe 15%, #1fd1f9 90%);
+  color: #fafafd;
+  box-shadow: 0 6px 24px rgba(48,201,244,0.13);
+  transform: translateY(-2px) scale(1.045);
+}
+
+#profileBtn span {
+  margin-right: 7px;
+  font-size: 21px;
+}
+
+        /* Active or selected state */
+        .nav-link.active {
+            background: #1db954;
+            color: #fff;
+        }
+
+        /* Change icon color on hover or active */
+        .nav-link:hover .nav-icon,
+        .nav-link.active .nav-icon {
+            fill: #fff;
+        }
+
+        /* Subtle shadow on hover */
+        .nav-link:hover {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .close {
+            display: none;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        /* Playlist Section */
+        .grad {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0 20px 100px 20px;
+        }
+
+        .playlist-heading {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        body.light .playlist-heading {
+            color: #333;
+        }
+
+        .playlist-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: #b3b3b3;
+        }
+
+        /* Styled Song List */
+        .songlist {
+            margin-bottom: 20px;
+        }
+
+        .songlist ul {
+            list-style: none;
+        }
+
+        .songlist li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        body.light .songlist li {
+            background: rgba(0, 0, 0, 0.03);
+        }
+
+        .songlist li:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        body.light .songlist li:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .songlist li.active {
+            background: rgba(102, 126, 234, 0.2);
+            border-left: 3px solid #667eea;
+        }
+
+        .songlist .icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .songlist .icon svg {
+            width: 16px;
+            height: 16px;
+            fill: #b3b3b3;
+        }
+
+        .songlist li.active .icon svg {
+            fill: #667eea;
+        }
+
+        .songlist .title {
+            flex: 1;
+            font-size: 14px;
+            color: #e0e0e0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        body.light .songlist .title {
+            color: #333;
+        }
+
+        .songlist li.active .title {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        body.light .songlist li.active .title {
+            color: #667eea;
+        }
+
+        #profileBtn {
+            margin: 20px 0 0 0;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        #profileBtn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Right Section */
+        .right {
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #141e30 0%, #243b55 100%);
+
+
+
+
+            transition: background 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.light .right {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        /* Decorative Background Elements */
+        .right::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .right::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(30px, 30px);
+            }
+        }
+
+        .right .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 10;
+        }
+
+        body.light .right .navbar {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-inline-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+
+
+
+
+        #toggle-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        #toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .nav-right a {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .profile-icon:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Spotify Playlist Section */
+        .spotifyplaylist {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px 40px 120px 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .cardcontainer {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        body.light .card {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        body.light .card:hover {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .card img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .card .para h2 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #fff;
+        }
+
+        body.light .card .para h2 {
+            color: #333;
+        }
+
+        .card .para p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        body.light .card .para p {
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        .section-mid {
+            margin: 40px 0 20px 0;
+        }
+
+        .section-heading {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        body.light .section-heading {
+            color: #333;
+        }
+
+        .card-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        body.light .profile-card {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .profile-card:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 12px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .profile-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        body.light .profile-name {
+            color: #333;
+        }
+
+        /* Professional Music Player Bar */
+        #player-bar {
+            position: fixed;
+            bottom: 0;
+            left: 280px;
+            right: 0;
+            background: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(30px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 20px;
+            box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.2);
+            display: block;
+            z-index: 100;
+            transition: all 0.3s;
+        }
+
+        body.light #player-bar {
+            background: rgba(255, 255, 255, 0.98);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .player-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            align-items: center;
+            gap: 20px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        /* Left Section */
+        .player-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        #player-img {
+            width: 56px;
+            height: 56px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .player-song-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        #player-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 3px;
+        }
+
+        body.light #player-title {
+            color: #333;
+        }
+
+        #player-artist {
+            font-size: 12px;
+            color: #b3b3b3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        body.light #player-artist {
+            color: #666;
+        }
+
+        /* Center Section */
+        .player-center {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .player-control-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            color: #b3b3b3;
+        }
+
+        body.light .player-control-btn {
+            color: #666;
+        }
+
+        .player-control-btn:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.1);
+        }
+
+        body.light .player-control-btn:hover {
+            color: #333;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .player-control-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .play-pause-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white !important;
+            width: 40px;
+            height: 40px;
+            padding: 0;
+        }
+
+        .play-pause-btn:hover {
+            background: linear-gradient(135deg, #5568d3, #6a3d8f);
+            transform: scale(1.1);
+        }
+
+        .play-pause-btn svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Progress Bar */
+        .player-progress-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .time-current,
+        .time-total {
+            font-size: 11px;
+            color: #b3b3b3;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        body.light .time-current,
+        body.light .time-total {
+            color: #666;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            position: relative;
+            cursor: pointer;
+            overflow: visible;
+        }
+
+        body.light .progress-bar {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar:hover .progress-bar-handle {
+            opacity: 1;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        .progress-bar-handle {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.2s;
+            left: 0%;
+            cursor: grab;
+        }
+
+        .progress-bar-handle:active {
+            cursor: grabbing;
+        }
+
+        /* Right Section */
+        .player-right {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .player-icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            color: #b3b3b3;
+        }
+
+        body.light .player-icon-btn {
+            color: #666;
+        }
+
+        .player-icon-btn:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        body.light .player-icon-btn:hover {
+            color: #333;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .player-icon-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .player-icon-btn.active {
+            color: #667eea;
+        }
+
+        /* Volume Slider */
+        .volume-slider {
+            width: 100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .player-right:hover .volume-slider {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        #volume-control {
+            width: 100%;
+            height: 4px;
+            border-radius: 2px;
+            background: rgba(255, 255, 255, 0.2);
+            outline: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+
+        body.light #volume-control {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        #volume-control::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        #volume-control::-moz-range-thumb {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Hide default audio element */
+        #player-audio {
+            display: none;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4caf50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        body.light ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        body.light ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .player-content {
+                grid-template-columns: 1fr 1.5fr 0.5fr;
+            }
+
+            .volume-slider {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .left {
+                position: fixed;
+                left: -100%;
+                top: 0;
+                bottom: 0;
+                width: 280px;
+                z-index: 200;
+                transition: left 0.3s;
+            }
+
+            .left.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .close {
+                display: block;
+            }
+
+            #player-bar {
+                left: 0;
+            }
+
+            .player-content {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .player-left {
+                justify-content: space-between;
+            }
+
+            .player-right {
+                display: none;
+            }
+
+            .player-progress-container {
+                margin-top: 5px;
+            }
+
+            .nav-inline-links {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <nav class="navbar">
+                <div class="nav-left">
+                    <ul class="nav-links-left">
+                        <span class="logo">
+                            <img src="images/unnamed.jpg" alt="Logo" class="logo-img">
+                        </span>
+                        <div class="sidebar-buttons">
+                            <a href="index.html" class="nav-link">
+                                <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" fill="#b3b3b3"
+                                    viewBox="0 0 24 24">
+                                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                                </svg>
+                                <span>Home</span>
+
+                            </a>
+                            <button id="profileBtn">🎵 Go to Profile</button>
+                            <div class="close">
+                                <img src="close.svg" alt="Close">
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+            </nav>
+            <div class="grad">
+                <h2 class="playlist-heading">
+                    <span class="playlist-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#b3b3b3" viewBox="0 0 24 24">
+                            <path d="M3 10h14v2H3v-2zm0-4h14v2H3V6zm0 8h10v2H3v-2zm16 0v-4h-2v6h6v-2h-4z" />
+                        </svg>
+                    </span>
+                    Your Library
+                </h2>
+                <div class="songlist">
+                    <ul id="songlist"></ul>
+                    <ul id="savedSongsList" style="display:none;"></ul>
+                </div>
+
+                <audio id="audio-player">
+                    <source id="audio-source" src="" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+
+        <div class="right">
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li class="nav-inline-links">
+                        <div class="hamburger">
+                            <img src="hameburger.svg" alt="Menu">
+                        </div>
+                        <div class="nav-item">
+                            <button id="toggle-btn">🌙 Dark Mode</button>
+                        </div>
+                    </li>
+                </ul>
+                <div class="nav-right">
+                    <a href="/login" id="goLogin">
+                        <svg class="profile-icon" xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24">
+                            <path
+                                d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
+                        </svg>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="spotifyplaylist">
+                <div class="cardcontainer">
+                    <div class="card album-card" data-playlist="Happy hist">
+                        <img src="https://i.scdn.co/image/ab67706f00000002a19c598b2ee48724240ea187" alt="Happy hist">
+                        <div class="para">
+                            <h2>Happy Hits</h2>
+                            <p>Feel-good tunes</p>
+                        </div>
+                    </div>
+                    <div class="card album-card" data-playlist="Sad vibes">
+                        <img src="images/album2.jpeg" alt="Hanuman Chalisa">
+                        <div class="para">
+                            <h2>Hanuman Chalisa</h2>
+                            <p>Gulshan Kumar</p>
+                        </div>
+                    </div>
+                    <div class="card album-card" data-playlist="Chillout">
+                        <img src="images/album3.jpeg" alt="Alan Walker">
+                        <div class="para">
+                            <h2>Alan Walker</h2>
+                            <p>Relax and unwind</p>
+                        </div>
+                    </div>
+                    <div class="card album-card" data-playlist="Workout">
+                        <img src="images/album4.jpg" alt="Bahubali">
+                        <div class="para">
+                            <h2>Bahubali</h2>
+                            <p>Epic soundtracks</p>
+                        </div>
+                    </div>
+                    <div class="card album-card" data-playlist="Party">
+                        <img src="images/album5.jpg" alt="Pushpa">
+                        <div class="para">
+                            <h2>Pushpa</h2>
+                            <p>Dance all night</p>
+                        </div>
+                    </div>
+                    <div class="card album-card" data-playlist="Party">
+                        <img src="images/album5.jpg" alt="Pushpa">
+                        <div class="para">
+                            <h2>Pushpa 2</h2>
+                            <p>Party vibes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-mid">
+                    <h2 class="section-heading">Popular Artists</h2>
+                </div>
+
+                <div class="card-row scrollable-row">
+                    <div class="profile-card" data-playlist="Taylor Swift">
+                        <img src="images/artist1.webp" alt="Artist 1" class="profile-img">
+
+
+                        <h3 class="profile-name">Taylor Swift</h3>
+                    </div>
+                    <div class="profile-card" data-playlist="Guru Randhawa">
+                        <img src="images/artist6.jpeg" alt="Guru Randhawa" class="profile-img">
+                        <h3 class="profile-name">Guru Randhawa</h3>
+                    </div>
+                    <div class="profile-card" data-playlist="Shreya Ghoshal">
+                        <img src="images/artist3.jpeg" alt="Shreya Ghoshal" class="profile-img">
+                        <h3 class="profile-name">Shreya Ghoshal</h3>
+                    </div>
+                    <div class="profile-card" data-playlist="Kailash Kher">
+                        <img src="images/artist4.jpeg" alt="Kailash Kher" class="profile-img">
+                        <h3 class="profile-name">Kailash Kher</h3>
+                    </div>
+                    <div class="profile-card" data-playlist="Arijit Singh">
+                        <img src="images/artist5.webp" alt="Arijit Singh" class="profile-img">
+                        <h3 class="profile-name">Arijit Singh</h3>
+                    </div>
+                    <div class="profile-card" data-playlist="Metamorphism">
+                        <img src="images/artist2.jpeg" alt="Metamorphism" class="profile-img">
+                        <h3 class="profile-name">Metamorphism</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Music Player Bar -->
+            <div id="player-bar">
+                <div class="player-content">
+                    <!-- Left: Song Info -->
+                    <div class="player-left">
+                        <img id="player-img"
+                            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Crect fill='%23333' width='56' height='56'/%3E%3C/svg%3E"
+                            alt="song">
+                        <div class="player-song-info">
+                            <div id="player-title">No song playing</div>
+                            <div id="player-artist">Select a song to play</div>
+                        </div>
+                        <button class="player-icon-btn" id="like-btn" title="Like">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Center: Player Controls -->
+                    <div class="player-center">
+                        <div class="player-controls">
+                            <button class="player-control-btn" id="shuffle-btn" title="Shuffle">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z" />
+                                </svg>
+                            </button>
+                            <button class="player-control-btn" id="prev-btn" title="Previous">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+                                </svg>
+                            </button>
+                            <button class="player-control-btn play-pause-btn" id="play-pause-btn" title="Play">
+                                <svg id="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                                <svg id="pause-icon" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+                                    <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
+                                </svg>
+                            </button>
+                            <button class="player-control-btn" id="next-btn" title="Next">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+                                </svg>
+                            </button>
+                            <button class="player-control-btn" id="repeat-btn" title="Repeat">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="player-progress-container">
+                            <span class="time-current" id="time-current">0:00</span>
+                            <div class="progress-bar" id="progress-bar">
+                                <div class="progress-bar-fill" id="progress-bar-fill"></div>
+                                <div class="progress-bar-handle" id="progress-bar-handle"></div>
+                            </div>
+                            <span class="time-total" id="time-total">0:00</span>
+                        </div>
+                    </div>
+
+                    <!-- Right: Volume & Additional Controls -->
+                    <div class="player-right">
+                        <button class="player-icon-btn" id="queue-btn" title="Queue">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M15 6H3v2h12V6zm0 4H3v2h12v-2zM3 16h8v-2H3v2zM17 6v8.18c-.31-.11-.65-.18-1-.18-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3V8h3V6h-5z" />
+                            </svg>
+                        </button>
+                        <button class="player-icon-btn" id="volume-btn" title="Volume">
+                            <svg id="volume-icon" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+                            </svg>
+                        </button>
+                        <div class="volume-slider" id="volume-slider">
+                            <input type="range" id="volume-control" min="0" max="100" value="80">
+                        </div>
+                    </div>
+                </div>
+                <audio id="player-audio" preload="metadata"></audio>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="script3.js"></script>
+</body>
+
+</html>

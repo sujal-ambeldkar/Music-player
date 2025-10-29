@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Signup</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #121212;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+
+    .login-wrapper {
+      background-color: #1e1e1e;
+      padding: 40px;
+      border-radius: 12px;
+      width: 350px;
+      max-width: 90%;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+      animation: slideUp 0.7s ease forwards;
+      transform: translateY(40px);
+      opacity: 0;
+    }
+
+    .logo img {
+      width: 120px;
+      margin-bottom: 30px;
+      animation: fadeSpin 1s ease;
+      margin-bottom: 20px;
+        width: 90px;
+        height: 90px;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 12px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: none;
+      background-color: #282828;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    input[type="submit"] {
+      margin-top: 20px;
+      background-color: #1DB954;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #1ed760;
+    }
+
+    a {
+      display: block;
+      margin-top: 20px;
+      color: #b3b3b3;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    a:hover {
+      color: #1DB954;
+    }
+
+    /* Error message style */
+    .error-message {
+      background: #ff4d4d;
+      color: #fff;
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 15px;
+      display: none;
+      font-size: 14px;
+    }
+
+    /* Shake animation */
+    @keyframes shake {
+      0% {
+        transform: translateX(0);
+      }
+
+      20% {
+        transform: translateX(-10px);
+      }
+
+      40% {
+        transform: translateX(10px);
+      }
+
+      60% {
+        transform: translateX(-10px);
+      }
+
+      80% {
+        transform: translateX(10px);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    .shake {
+      animation: shake 0.4s ease;
+    }
+
+    @keyframes fadeSpin {
+      from {
+        opacity: 0;
+        transform: rotate(-30deg) scale(0.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      }
+    }
+
+    @keyframes slideUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* 📱 Mobile Responsive */
+    @media (max-width: 480px) {
+      .login-wrapper {
+        padding: 25px;
+        width: 70%;
+        max-width: 90%;
+      }
+
+      .logo img {
+
+        
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      input[type="submit"] {
+        font-size: 14px;
+        padding: 10px;
+      }
+
+      a {
+        font-size: 12px;
+      }
+
+      .error-message {
+        font-size: 12px;
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-wrapper" id="card">
+    <div class="logo">
+      <img src="images\unnamed.jpg" alt="Spotify Logo">
+    </div>
+    <h2>Signup</h2>
+    <form id="signupForm" action="/signup" method="post">
+      <input type="text" name="username" placeholder="Enter username" required>
+      <input type="password" name="password" placeholder="Enter password" required>
+      <input type="submit" value="Sign Up">
+    </form>
+    <div class="error-message" id="errorBox">User already exists!</div>
+    <a href="/login">Already have an account</a>
+  </div>
+
+  <script>document.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add("loaded");
+    });
+
+    const form = document.getElementById("signupForm");
+    const errorBox = document.getElementById("errorBox");
+    const card = document.getElementById("card");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData); // { username: "...", password: "..." }
+
+      try {
+        const res = await fetch("/signup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        const result = await res.json(); // <-- changed from res.text()
+
+        if (!result.success) {
+          errorBox.style.display = "block";
+          card.classList.add("shake");
+          setTimeout(() => card.classList.remove("shake"), 400);
+        } else {
+          window.location.href = "/login.html"; // redirect to login page
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Signup failed. Try again!");
+      }
+    });
+
+    // Hide error message when typing again
+    document.querySelectorAll("input").forEach(input => {
+      input.addEventListener("input", () => {
+        errorBox.style.display = "none";
+      });
+    });
+
+  </script>
+</body>
+
+</html>
