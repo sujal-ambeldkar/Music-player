@@ -1,6 +1,9 @@
 {
   "dependencies": {
+<<<<<<< HEAD
     "bcrypt": "^6.0.0",
+=======
+>>>>>>> e1f6a6e3691e60ecb8139d07c22283f5b1129b35
     "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^17.0.1",
@@ -9,8 +12,12 @@
     "hbs": "^4.2.0",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.17.0",
+<<<<<<< HEAD
     "mongoose": "^8.18.0",
     "multer": "^2.0.2",
     "node-fetch": "^2.7.0"
+=======
+    "mongoose": "^8.18.0"
+>>>>>>> e1f6a6e3691e60ecb8139d07c22283f5b1129b35
   }
 }
